@@ -16,6 +16,8 @@ namespace MVCApp.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public string BirthPlace { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -23,6 +25,7 @@ namespace MVCApp.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            
         }
 
         public static ApplicationDbContext Create()

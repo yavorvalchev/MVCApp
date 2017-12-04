@@ -130,6 +130,38 @@ namespace MVCApp.Controllers
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
 
+
+        //
+        // GET: /Manage/EditBirthPlace
+        public ActionResult EditBirthPlace()
+        {
+            var userId = User.Identity.GetUserId();
+            var appUser = UserManager.FindById(userId);
+            var model = new EditBirthPlaceModel
+            {
+                BirthPlace = appUser.BirthPlace
+            };
+            return View(model);
+        }
+
+
+        //
+        // POST: /Manage/EditBirthPlace
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditBirthPlace(EditBirthPlaceModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var userId = User.Identity.GetUserId();
+            var appUser = UserManager.FindById(userId);
+            appUser.BirthPlace = model.BirthPlace;
+            UserManager.Update(appUser);
+            return RedirectToAction("Index", "Manage");
+        }
+
         //
         // POST: /Manage/EnableTwoFactorAuthentication
         [HttpPost]

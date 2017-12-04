@@ -83,4 +83,9 @@ namespace MVCApp.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+
+    public class EditBirthPlaceModel
+    {
+        public string BirthPlace { get; set; }
+    }
 }
