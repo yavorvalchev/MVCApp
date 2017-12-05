@@ -86,6 +86,20 @@ namespace MVCApp.Models
 
     public class EditBirthPlaceModel
     {
+        [Required]
+        [Display(ResourceType = typeof(Resources), Name = nameof(Resources.BirthPlace))]
         public string BirthPlace { get; set; }
+        [Display(ResourceType = typeof(Resources), Name = nameof(Resources.BirthPlaceType))]
+        public BirthPlaceType BirthPlaceType { get; set; }
+    }
+    
+    public enum BirthPlaceType
+    {
+        [Display(ResourceType = typeof(Resources), Name = nameof(Resources.City))]
+        City = 1,
+        [Display(ResourceType = typeof(Resources), Name = nameof(Resources.Village))]
+        Village = 2,
+        [Display(ResourceType = typeof(Resources), Name = nameof(Resources.Town))]
+        Town = 4
     }
 }

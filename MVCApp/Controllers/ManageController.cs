@@ -62,7 +62,7 @@ namespace MVCApp.Controllers
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : "";
-
+            
             var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
             {
@@ -139,7 +139,8 @@ namespace MVCApp.Controllers
             var appUser = UserManager.FindById(userId);
             var model = new EditBirthPlaceModel
             {
-                BirthPlace = appUser.BirthPlace
+                BirthPlace = appUser.BirthPlace,
+                BirthPlaceType = appUser.BirthPlaceType
             };
             return View(model);
         }
@@ -158,6 +159,7 @@ namespace MVCApp.Controllers
             var userId = User.Identity.GetUserId();
             var appUser = UserManager.FindById(userId);
             appUser.BirthPlace = model.BirthPlace;
+            appUser.BirthPlaceType = model.BirthPlaceType;
             UserManager.Update(appUser);
             return RedirectToAction("Index", "Manage");
         }

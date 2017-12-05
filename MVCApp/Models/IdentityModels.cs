@@ -18,6 +18,7 @@ namespace MVCApp.Models
         }
 
         public string BirthPlace { get; set; }
+        public BirthPlaceType BirthPlaceType { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
